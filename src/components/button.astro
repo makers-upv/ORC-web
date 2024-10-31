@@ -1,0 +1,59 @@
+---
+interface Props {
+  button: string;
+}
+
+const { button } = Astro.props;
+let form = false;
+if (button == "Apúntate") {
+  form = true;
+}
+---
+
+{
+  form ? (
+    <a
+      href="https://www.thecontesthub.com/es/contests/olympic-robotic-challenge-orc"
+      target="_blank"
+    >
+      <button>
+        {button}
+        <slot />
+      </button>
+    </a>
+  ) : (
+    <button>
+      {button}
+      <slot />
+    </button>
+  )
+}
+
+<style>
+  button {
+    /* width: 100%; */
+    color: #090909;
+    padding: 0.7em 1.7em;
+    font-size: 18px;
+    cursor: pointer;
+    border: 1px solid #e8e8e8;
+    transition: all 0.2s;
+    border-radius: 25px;
+    background: var(--colorMakers);
+    box-shadow:
+      5px 5px 10px #5a5a5a,
+      -5px -5px 10px #ffffff;
+    bottom: 0;
+  }
+
+  button:hover {
+    border: 1px solid black;
+  }
+
+  button:active {
+    border-radius: 25px;
+    box-shadow:
+      inset 5px 5px 10px #5a5a5a,
+      inset -5px -5px 10px #ffffff;
+  }
+</style>

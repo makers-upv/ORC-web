@@ -1,50 +1,180 @@
 ---
+import NavBar from "../components/navbar.astro";
+import { ViewTransitions } from "astro:transitions";
+import Footer from "../components/footer.astro";
 interface Props {
-	title: string;
+  title: string;
+  nav?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, nav = true } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <link href="./assets/fontawesome/css/fontawesome.css" rel="stylesheet" />
+    <link href="./assets/fontawesome/css/brands.css" rel="stylesheet" />
+    <link href="./assets/fontawesome/css/solid.css" rel="stylesheet" />
+    <link type="text/plain" rel="author" href="/humans.txt" />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"
+    ></script>
+    <script is:inline>
+      !(function (t, e) {
+        var o, n, p, r;
+        e.__SV ||
+          ((window.posthog = e),
+          (e._i = []),
+          (e.init = function (i, s, a) {
+            function g(t, e) {
+              var o = e.split(".");
+              2 == o.length && ((t = t[o[0]]), (e = o[1])),
+                (t[e] = function () {
+                  t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+                });
+            }
+            ((p = t.createElement("script")).type = "text/javascript"),
+              (p.crossOrigin = "anonymous"),
+              (p.async = !0),
+              (p.src =
+                s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") +
+                "/static/array.js"),
+              (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(
+                p,
+                r
+              );
+            var u = e;
+            for (
+              void 0 !== a ? (u = e[a] = []) : (a = "posthog"),
+                u.people = u.people || [],
+                u.toString = function (t) {
+                  var e = "posthog";
+                  return (
+                    "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e
+                  );
+                },
+                u.people.toString = function () {
+                  return u.toString(1) + ".people (stub)";
+                },
+                o =
+                  "init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(
+                    " "
+                  ),
+                n = 0;
+              n < o.length;
+              n++
+            )
+              g(u, o[n]);
+            e._i.push([i, s, a]);
+          }),
+          (e.__SV = 1));
+      })(document, window.posthog || []);
+      posthog.init("phc_T7Isjd1OttCPBZLnRScU7raUf1Yw5YIcdjITGLrnODP", {
+        api_host: "https://us.i.posthog.com",
+        person_profiles: "always", // or 'always' to create profiles for anonymous users as well
+      });
+    </script>
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body>
+    {nav && <NavBar />}
+
+    <slot />
+    <Footer />
+  </body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+  :root {
+    --background: #d7d7d7;
+    --colorORC: #2c5295;
+    --colorMakers: #fbcd3c;
+    --colorMakers-200: #a59501;
+    --fontColor1: #000000;
+    --fontColor2: #fefdfb;
+
+    --text-50: #ebe9fc;
+    --text-100: #d7d2f9;
+    --text-200: #afa6f2;
+    --text-300: #8779ec;
+    --text-400: #5e4ce6;
+    --text-500: #3620df;
+    --text-600: #2b19b3;
+    --text-700: #211386;
+    --text-800: #160d59;
+    --text-900: #0b062d;
+    --text-950: #050316;
+
+    --background-50: #ebebfa;
+    --background-100: #d6d6f5;
+    --background-200: #adadeb;
+    --background-300: #8585e0;
+    --background-400: #5c5cd6;
+    --background-500: #3333cc;
+    --background-600: #2929a3;
+    --background-700: #1f1f7a;
+    --background-800: #141452;
+    --background-900: #0a0a29;
+    --background-950: #050514;
+
+    --primary-50: #fef9e6;
+    --primary-100: #fef3cd;
+    --primary-200: #fde69b;
+    --primary-300: #fcda69;
+    --primary-400: #fbcd37;
+    --primary-500: #fac105;
+    --primary-600: #c89a04;
+    --primary-700: #967403;
+    --primary-800: #644d02;
+    --primary-900: #322701;
+    --primary-950: #191301;
+
+    --secondary-50: #ebf0f9;
+    --secondary-100: #d8e2f3;
+    --secondary-200: #b0c5e8;
+    --secondary-300: #89a7dc;
+    --secondary-400: #628ad0;
+    --secondary-500: #3b6dc4;
+    --secondary-600: #2f579d;
+    --secondary-700: #234176;
+    --secondary-800: #172c4f;
+    --secondary-900: #0c1627;
+    --secondary-950: #060b14;
+
+    --accent-50: #e9e6ff;
+    --accent-100: #d3cdfe;
+    --accent-200: #a69bfd;
+    --accent-300: #7a68fd;
+    --accent-400: #4d36fc;
+    --accent-500: #2104fb;
+    --accent-600: #1a03c9;
+    --accent-700: #140297;
+    --accent-800: #0d0264;
+    --accent-900: #070132;
+    --accent-950: #030019;
+  }
+
+  html,
+  body {
+    z-index: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    color: var(--fontColor1);
+    text-wrap: pretty;
+  }
 </style>

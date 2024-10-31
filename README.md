@@ -52,3 +52,38 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+# landing
+
+Descripción,
+fechas
+premios
+inscripción
+Sponsors
+Imágenes Años anteriores
+
+# talleres
+
+Fechas
+Temas
+Que necesito llevar para el taller
+REcursos del taller
+
+# kits
+
+Kit, precio, link,
+Addons
+
+# Links curiosos
+
+https://neumorphism.io/
+https://us.posthog.com/project/100208
+https://github.com/justinribeiro/lite-youtube
+https://humanstxt.org/ES/Standard.html
+
+# Pedir
+
+Makers uov logo
+Imagenes orc
+assets en general
+Colores
